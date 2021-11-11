@@ -8,7 +8,8 @@ module.exports = {
     mode: "development",
     entry: {
         index: './src/index.js',
-        print: './src/print.js'
+        print: './src/print.js',
+        another: './src/another-module.js'
     },
 
     devtool: "inline-source-map", // 번들링되서 묶기기전 코드로 에러시 소스를 안내해준다.
@@ -35,6 +36,13 @@ module.exports = {
         // npm install --save-dev express webpack-dev-middleware
         // express 서버 사용할때 메인루트에 server.js로 webpack-dev-middleware를 호출
         publicPath: "/"
+    },
+
+    // 엔트리 청크 사이에 중복된 모듈이 있는지 체크하고 모두 포함되는 경우 개별 모듈 스크립트로 분할한다.
+    optimization: {
+        splitChunks: {
+            chunks: "all"
+        }
     },
 
     module: {

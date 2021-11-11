@@ -29,6 +29,7 @@
     "yamljs": "^0.3.0"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "lodash": "^4.17.21"
   }
 }
