@@ -11,17 +11,30 @@ module.exports = {
         print: './src/print.js'
     },
 
-    //npm install --save-dev html-webpack-plugin
+    devtool: "inline-source-map", // 번들링되서 묶기기전 코드로 에러시 소스를 안내해준다.
+
+    // npm install --save-dev webpack-dev-server
+    // 개발서버 제공 (watch) 와 같음
+    devServer: {
+        static: "./dist",
+    },
+
+    // npm install --save-dev html-webpack-plugin
+    // html 파일 포함 dist 파일을 완성해준다.
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Output Management',
+            title: 'Development',
         }),
     ],
 
     output: {
         filename: '[name].bundle.js', // 각 엔트리에서 지정한 이름.bundle.js 로 번들링됨
         path: path.resolve(__dirname, 'dist'),
-        clean: true // 빌드 실행하기전 찌꺼기, 잔여파일을 삭제후 진행
+        clean: true, // 빌드 실행하기전 찌꺼기, 잔여파일을 삭제후 진행
+
+        // npm install --save-dev express webpack-dev-middleware
+        // express 서버 사용할때 메인루트에 server.js로 webpack-dev-middleware를 호출
+        publicPath: "/"
     },
 
     module: {
